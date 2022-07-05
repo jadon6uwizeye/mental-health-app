@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../utils/emoticons.dart';
+import '../utils/excercise_tile.dart';
 
 void main() {
   runApp(const HomePage());
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         currentIndex: 0,
         selectedItemColor: Colors.black,
         unselectedItemColor: Color.fromARGB(255, 42, 38, 38),
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 237, 237, 239),
         onTap: (int index) {
           // ignore: avoid_print
           print('index: $index');
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
                   Row(
@@ -193,11 +194,72 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-              child: Container(
-                color: Colors.white,
-                child: Row(),
-              ),
-            )
+                child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(35),
+                      topRight: Radius.circular(35),
+                    ),
+                    child: Container(
+                      color: Color.fromARGB(255, 237, 237, 239),
+                      // ignore: prefer_const_literals_to_create_immutables
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 35, right: 35, top: 20, bottom: 12),
+                        child: Column(
+                          children: [
+                            // ignore: prefer_const_literals_to_create_immutables
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  Text("Excercises",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
+                                  Icon(Icons.more_horiz, color: Colors.black),
+                                ]),
+
+                            SizedBox(height: 10),
+
+                            Expanded(
+                                child: ListView(
+                              children: const [
+                                ExcerciseTile(
+                                  excerciseIcon:
+                                      Icon(Icons.favorite, color: Colors.white),
+                                  colorInUse: Colors.orange,
+                                  excerciseName: 'Speaking Skills',
+                                  excerciseNumber: '16 Excercises',
+                                ),
+                                ExcerciseTile(
+                                  excerciseIcon:
+                                      Icon(Icons.people, color: Colors.white),
+                                  colorInUse: Color.fromARGB(255, 54, 97, 197),
+                                  excerciseName: 'Reading Skills',
+                                  excerciseNumber: '10 essays',
+                                ),
+                                ExcerciseTile(
+                                  excerciseIcon: Icon(
+                                      Icons.airline_seat_recline_extra,
+                                      color: Colors.white),
+                                  colorInUse: Colors.red,
+                                  excerciseName: 'Workout',
+                                  excerciseNumber: 'Speed: 5km/h',
+                                ),
+                                ExcerciseTile(
+                                  excerciseIcon:
+                                      Icon(Icons.star, color: Colors.white),
+                                  colorInUse: Colors.pink,
+                                  excerciseName: 'Push Ups',
+                                  excerciseNumber: '10 sets of 10',
+                                )
+                              ],
+                            ))
+                          ],
+                        ),
+                      ),
+                    )))
           ],
         ),
       ),
